@@ -1,7 +1,8 @@
 /**
  * Text colors.
  */
-$color-body-text: 'aktiv-grotesk', sans-serif;
+$color-heading: #003366;
+$color-body-text: #9B9B9B;
 
 /**
  * Background colors.
@@ -29,11 +30,12 @@ $color-error: #ff6d6d;
 $color-error-bg: #ffffff;
 $color-success: #000000;
 $color-success-bg: #000000;
+$color-button_call:#003366;
 
 /**
  * Typography.
  */
-$font-heading: 'aktiv-grotesk', sans-serif;
+$font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-body: var(--font-body);
 $font-body-weight: var(--font-body-weight);
 $font-body-style: var(--font-body-style);

@@ -13,3 +13,16 @@ body,
 html {
   height: 100%;
 }
+
+.page-width{
+  max-width: 1390px;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.grid__item{
+  float: left;
+  padding-left: 30px;
+  width: 100%;
+}
+    

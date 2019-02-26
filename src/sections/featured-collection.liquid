@@ -9,32 +9,53 @@
 <section class="featured-collection" data-section-id="{{ section.id }}" data-section-type="featured-collection">
   {%- assign collection = collections[section.settings.collection] -%}
 
-  <h2>{{ collection.title | escape }}</h2>
+  <header class="section-header page-width">
+    <h2>{{ collection.title | escape }}</h2>
 
-  <p>{{ collection.description }}</p>
+    <p>{{ collection.description }}</p>
+  </header>
 
-  {% for product in collection.products limit: 6 %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
-  
-    <a href="{{ product.url | within: collection }}">
-      <div>
-        {% if product.featured_image != blank %}
-          {{ product.featured_image | img_url: 'large' | img_tag }}
-        {% endif %}
+  <div class="collection">
+    <div class="page-width">
+      <div class="grid">
+
+        {% for product in collection.products limit: 4 %}
+          {% assign current_variant = product.selected_or_first_available_variant %}
         
-        <span js-ajax-cart="addToCart" data-variant-id="{{ current_variant.id }}" data-quantity="1">Add to cart</span>
+          <div class="grid__item">
+            <a class="item" href="{{ product.url | within: collection }}">
+              <figure class="item__img">
+                {% if product.featured_image != blank %}
+                  {{ product.featured_image | img_url: 'large' | img_tag }}
+                {% endif %}
+                
+                <span js-ajax-cart="addToCart" data-variant-id="{{ current_variant.id }}" data-quantity="1">Add to cart</span>
+              </figure>
+
+              <div class="item__title">
+                <p>{{ product.title | escape }}</p>
+
+                <span>
+                  {% include 'product-price' %}
+                </span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+
       </div>
 
-      <div>
-        <p>{{ product.title | escape }}</p>
+      {% if section.settings.title != blank %}
+        <a class="button" href="/collections/{{ section.settings.home_page_featured_products }}">
+          <h2 class="small--text-center">{{ section.settings.title | escape }}</h2>
+        </a>
+      {% endif %}
 
-        <span>
-          {% include 'product-price' %}
-        </span>
-      </div>
-    </a>
-  {% endfor %}
+    </div>
+  </div>
+    
 </section>
+
 
 {% schema %}
   {
